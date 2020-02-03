@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+    server-dev:
+        image: jboss6billeteraweb:latest
+        ports:
+            - "8089:8080"
+            - "8787:8787"
+        volumes:
+            - server-target:/opt/jboss/server/default/deploy
+            - /var/run/docker.sock:/var/run/docker.sock
+    dev:
+        image: billetera_web_dev:latest
+        tty: true
+        stdin_open: true
+        entrypoint:
+            - bash
+        volumes:
+            - source-files:/usr/mysources/
+            - mavenm2:/root/.m2/
+            - server-target:/usr/target
+            - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+    source-files:
+        driver: local
+        driver_opts:
+          type: none
+          o: bind
+          device: /c/Dev/Test1/mysources/
+    mavenm2:
+        driver: local
+        driver_opts:
+          type: none
+          o: bind
+          device: /c/Dev/Test1/maven.m2/
+    server-target:
+        driver_opts:
+            type: none
+            o: bind
+            device: /c/Dev/Test1/target/
+    
