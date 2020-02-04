@@ -14,7 +14,7 @@ Este repositorio contiene el archivo docker-compose y la estructura de carpetas 
 
 ### Codigo fuente
 
-El código fuente con los perfiles de developer se encuentran en la siguiente URL [Git Billetera virtual](http://repositorios.dcsas.com.co/gitlab/asesoftware/billetera_virtual_web.git)
+El código fuente con los perfiles de developer se encuentran en la siguiente URL [Git Billetera virtual](http://172.21.13.9/gitlab/asesoftware/billetera_virtual_web.git)
 
 1. Clonar el repositorio en la carpeta mysources
 2. Cambiar a la rama  **RQ_LOTERIA_DOCKER**
