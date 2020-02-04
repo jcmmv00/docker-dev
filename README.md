@@ -67,6 +67,7 @@ $ mvn -T8 clean install -P developer -DJBOSS_BV_HOME=/usr/target -e
 
 ### Puertos disponibles
 Los contendores exoponen los siguientes puertos:
+
 | Contenedor | Puertos | 
 | ------ | ------ |
 | dev_server-dev_1 | 8089, 8787 |
