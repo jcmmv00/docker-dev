@@ -5,12 +5,18 @@ El proyecto de billetera web para ser desplegado localmente para desarrollo o ma
 * [Apache-Maven](https://maven.apache.org/download.cgi) - Maven’s primary goal is to allow a developer to comprehend the complete state of a development effort in the shortest period of time
 * [Jboss 6](https://jbossas.jboss.org/downloads) - Servidor de aplicaciones (*pendiente por confirmar si es la versión AS o EAP).
 
+## Requerimientos
+
+* [Docker-compose](https://docs.docker.com/compose/install/) para instanciar los contenedores
+* [Ubuntu](https://ubuntu.com/tutorials/tutorial-ubuntu-on-windows#1-overview) Si se ejecuta desde un SO Windows debe contar con una terminal bash como git Bash o un sub-sistema linux como WSL.
+
 ## Contenido
 Este repositorio contiene el archivo docker-compose y la estructura de carpetas necesarias que serán usadas como unidades de montaje para los volumenes en los despligues de contenedores.
   - **maven.m2** (Ruta donde se almacena la configuración de Maven y el repositorio de dependencias)
   - **mysourcecode** (Acá se descarga el código fuente de git)
   - **target** (Esta carpeta almacena todos los archivos de despligue del servidor JBOSS)
   - **docker-compose.yml** (Al ser ejecutado crea los contenedores para desarrollo)
+  - **init.sh** (Es un script que prepara el workdirectory para el docker-compose.yml, es decir, que al ejecutarlo crea las carpetas para el montaje de los volumenes, hace otras configuraciones y finaliza con docker-compose-up)
 
 ### Codigo fuente
 
@@ -19,13 +25,11 @@ El código fuente con los perfiles de developer se encuentran en la siguiente UR
 1. Clonar el repositorio en la carpeta mysources
 2. Cambiar a la rama  **RQ_LOTERIA_DOCKER**
 
-### Instalación
+### Ejecución
 
-Billetera web requiere [Docker-compose](https://docs.docker.com/compose/install/) para instanciar los contenedores, 
-
-Para iniciar los contenedores ejecutar el siguiente comando.
+Para instanciar los contenedores ejecutar el siguiente comando.
 ```sh
-$ docker-compose up
+$ ./init.sh
 ```
 Esto instanciara un contenedor con todas las herramientas que se requieren para desarrollo y otro con el servidor JBOSS configurado especificamente para este proyecto.
 
@@ -86,16 +90,16 @@ Es obligatorio modificar las rutas definidas en el docker-compose.yml en la secc
 
 | Contenedor | Volumen  | Path host | Path container |
 | ------ | ------ | ------ | ------ |
-| dev_server-dev_1 | server-target | /c/BilleteraWeb/target/ |/opt/jboss/server/default/deploy/|
-| dev_dev_1 | source-files | /c/BilleteraWeb/mysources/ |/usr/mysources/|
-| dev_dev_1 | mavenm2 | /c/BilleteraWeb/maven.m2/ |/root/.m2/|
-| dev_dev_1 | server-target | /c/BilleteraWeb/target/ |/usr/target/|
+| dev_server-dev_1 | server-target | /target/ |/opt/jboss/server/default/deploy/|
+| dev_dev_1 | source-files | /mysources/ |/usr/mysources/|
+| dev_dev_1 | mavenm2 | /maven.m2/ |/root/.m2/|
+| dev_dev_1 | server-target | /target/ |/usr/target/|
 
 ### Development
 #### Building for source
 ### Todos
-
- - Write MORE Tests
+  - Descargar el código fuente directamente desde init.sh
+ - Se debe hacer autenticación con azure AAD Outh0 para el login con el registry
  - Add Night Mode
 
 License
