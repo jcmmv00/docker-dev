@@ -77,6 +77,9 @@ Los contendores exoponen los siguientes puertos:
 2. el puerto para hacer debug con Jboss usar 8787 
 
 ### Volumenes
+
+Es necesario ingresar a la configuración de docker en la sección de Resources -> FILE SHARING activar el disco local que contendrá las carpetas usadas en los montajes de volumenes.
+
 Se realizó el siguiente mapeo.
 
 Es obligatorio modificar las rutas definidas en el docker-compose.yml en la sección de **volumes** para la propiedad **device**, donde la rutas deben ser a las carpetas de este proyecto. 
