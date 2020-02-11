@@ -18,6 +18,11 @@ Este repositorio contiene el archivo docker-compose y la estructura de carpetas 
   - **docker-compose.yml** (Al ser ejecutado crea los contenedores para desarrollo)
   - **init.sh** (Es un script que prepara el workdirectory para el docker-compose.yml, es decir, que al ejecutarlo crea las carpetas para el montaje de los volumenes, hace otras configuraciones y finaliza con docker-compose-up)
 
+
+## Arquitectura 
+
+![Arquitectura](arq.png)
+
 ### Codigo fuente
 
 El código fuente con los perfiles de developer se encuentran en la siguiente URL [Git Billetera virtual](http://172.21.13.9/gitlab/asesoftware/billetera_virtual_web.git)
